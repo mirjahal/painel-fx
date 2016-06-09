@@ -13,68 +13,68 @@ import javafx.scene.text.Text;
 
 public class PainelController implements Initializable {
 
-	@FXML
-	private Text senhaDaVez;
+    @FXML
+    private Text senhaDaVez;
 
-	@FXML
-	private TextField campoNumeroDigitado;
+    @FXML
+    private TextField campoNumeroDigitado;
 
-	private AudioClip audio;
+    private AudioClip audio;
 
-	@Override
-	public void initialize(URL location, ResourceBundle resources) {
-		carregarAudio();
-		adicionarEventoInformarSenha();
-	}
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        carregarAudio();
+        adicionarEventoInformarSenha();
+    }
 
-	private void carregarAudio() {
-		String caminhoArquivoDeAudio = PainelController.class.getResource("../../audio/chamada.mp3").toString();
-		audio = new AudioClip(caminhoArquivoDeAudio);
-	}
+    private void carregarAudio() {
+        String caminhoArquivoDeAudio = PainelController.class.getResource("../../audio/chamada.mp3").toString();
+        audio = new AudioClip(caminhoArquivoDeAudio);
+    }
 
-	private void adicionarEventoInformarSenha() {
-		campoNumeroDigitado.setOnKeyReleased(new EventHandler<KeyEvent>() {
+    private void adicionarEventoInformarSenha() {
+        campoNumeroDigitado.setOnKeyReleased(new EventHandler<KeyEvent>() {
             public void handle(KeyEvent keyEvent) {
-            	if (keyEvent.getCode().toString().equals("ENTER")) {
-            		String numeroProximaSenha = getNumeroProximaSenha();
+                if (keyEvent.getCode().toString().equals("ENTER")) {
+                    String numeroProximaSenha = getNumeroProximaSenha();
 
-            		if (!numeroProximaSenha.isEmpty()) {
-	            		audio.stop();
-	            		senhaDaVez.setText(numeroProximaSenha);
-	            		audio.play();
-            		}
+                    if (!numeroProximaSenha.isEmpty()) {
+                        audio.stop();
+                        senhaDaVez.setText(numeroProximaSenha);
+                        audio.play();
+                    }
 
-            		campoNumeroDigitado.clear();
-            	}
+                    campoNumeroDigitado.clear();
+                }
             }
         });
-	}
+    }
 
-	private String getNumeroProximaSenha() {
-		String numeroProximaSenha = "";
+    private String getNumeroProximaSenha() {
+        String numeroProximaSenha = "";
 
-		if (possuiApenasNumeros(campoNumeroDigitado.getText())) {
-			numeroProximaSenha = campoNumeroDigitado.getText();
-		} else if (campoNumeroDigitado.getText().isEmpty() && !senhaDaVez.getText().isEmpty()) {
-			int numeroSenhaAtual = Integer.valueOf(senhaDaVez.getText());
-			numeroProximaSenha = Integer.toString(numeroSenhaAtual + 1);
-		}
+        if (possuiApenasNumeros(campoNumeroDigitado.getText())) {
+            numeroProximaSenha = campoNumeroDigitado.getText();
+        } else if (campoNumeroDigitado.getText().isEmpty() && !senhaDaVez.getText().isEmpty()) {
+            int numeroSenhaAtual = Integer.valueOf(senhaDaVez.getText());
+            numeroProximaSenha = Integer.toString(numeroSenhaAtual + 1);
+        }
 
-		return numeroProximaSenha;
-	}
+        return numeroProximaSenha;
+    }
 
-	private boolean possuiApenasNumeros(String texto) {
-		if (texto.isEmpty()) {
-			return false;
-		}
+    private boolean possuiApenasNumeros(String texto) {
+        if (texto.isEmpty()) {
+            return false;
+        }
 
-		for (int i = 0; i < texto.length(); i++) {
-			if (!Character.isDigit(texto.charAt(i))) {
-				return false;
-			}
-		}
+        for (int i = 0; i < texto.length(); i++) {
+            if (!Character.isDigit(texto.charAt(i))) {
+                return false;
+            }
+        }
 
-		return true;
-	}
+        return true;
+    }
 
 }
