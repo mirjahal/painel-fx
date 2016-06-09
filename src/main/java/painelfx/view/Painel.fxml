@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" styleClass="fundo" stylesheets="@../../../resources/painelfx/css/styles.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="painelfx.controller.PainelController">
+   <children>
+      <TextField fx:id="campoNumeroDigitado" opacity="0.0" />
+      <Text fx:id="senhaDaVez" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="senhaDaVez">
+         <font>
+            <Font size="96.0" />
+         </font></Text>
+   </children>
+</VBox>
