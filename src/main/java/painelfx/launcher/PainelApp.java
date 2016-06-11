@@ -14,54 +14,54 @@ import javafx.stage.WindowEvent;
 
 public class PainelApp extends Application {
 
-	private static Stage stage;
-	private Scene scene;
+    private static Stage stage;
+    private Scene scene;
 
-	@Override
-	public void start(Stage stage) {
-		try {
-			PainelApp.stage = stage;
-			iniciarLayout();
-			adicionarEventoFinalizarAplicacao();
-			PainelApp.stage.show();
-		} catch(Exception e) {
-			e.printStackTrace();
-		}
-	}
+    @Override
+    public void start(Stage stage) {
+        try {
+            PainelApp.stage = stage;
+            iniciarLayout();
+            adicionarEventoFinalizarAplicacao();
+            PainelApp.stage.show();
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+    }
 
-	public static void main(String[] args) {
-		launch(args);
-	}
+    public static void main(String[] args) {
+        launch(args);
+    }
 
-	private void iniciarLayout() {
+    private void iniciarLayout() {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(PainelApp.class.getResource("../view/Painel.fxml"));
         VBox raiz = null;
 
-		try {
-			raiz = (VBox) loader.load();
+        try {
+            raiz = (VBox) loader.load();
 
-			scene = new Scene(raiz);
-			scene.getStylesheets().add(getClass().getResource("../../css/styles.css").toExternalForm());
+            scene = new Scene(raiz);
+            scene.getStylesheets().add(getClass().getResource("../../css/styles.css").toExternalForm());
 
-			stage.setScene(scene);
-			stage.setFullScreen(true);
-			stage.centerOnScreen();
-			stage.setHeight(Screen.getPrimary().getVisualBounds().getHeight());
-			stage.setWidth(Screen.getPrimary().getVisualBounds().getWidth());
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+            stage.setScene(scene);
+            stage.setFullScreen(true);
+            stage.centerOnScreen();
+            stage.setHeight(Screen.getPrimary().getVisualBounds().getHeight());
+            stage.setWidth(Screen.getPrimary().getVisualBounds().getWidth());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
-	private void adicionarEventoFinalizarAplicacao() {
-		stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
-			@Override
-			public void handle(WindowEvent event) {
-				Platform.exit();
-				System.exit(0);
-			}
-		});
-	}
+    private void adicionarEventoFinalizarAplicacao() {
+        stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+            @Override
+            public void handle(WindowEvent event) {
+                Platform.exit();
+                System.exit(0);
+            }
+        });
+    }
 
 }
