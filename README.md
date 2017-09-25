@@ -4,7 +4,7 @@ Painel de chamada sequencial construído com JavaFX 2.0.
 
 ### Dependências necessárias ###
 
-As seguinte dependências são necessárias: 
+As seguintes dependências são necessárias: 
 
  - Java 8
  - Maven 3.3.9
